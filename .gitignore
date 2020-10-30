@@ -1,0 +1,7 @@
+venv
+exes/*
+htmls/*
+*.ipynb
+
+!exes/.gitkeep
+!htmls/.gitkeep
