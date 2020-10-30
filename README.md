@@ -19,7 +19,7 @@ exes
 Después, con python3 instalado y ubicado en la carpeta raíz de este proyecto ejecuta:
 
 ```bash
-python elpToHtml
+python elpToHtml.py
 ```
 
 Al usar sólo librerías estandar de python no es necesario crear ningún entorno virtual.
