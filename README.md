@@ -22,4 +22,6 @@ Después, con python3 instalado y ubicado en la carpeta raíz de este proyecto e
 python elpToHtml.py
 ```
 
+El script creará el mismo árbol de carpetas en la carpeta `html` con los archivos con el mismo nombre, pero siendo ya archivos.html
+
 Al usar sólo librerías estandar de python no es necesario crear ningún entorno virtual.
