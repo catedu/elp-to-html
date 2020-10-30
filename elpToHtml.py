@@ -3,27 +3,29 @@ import sys
 
 EXES = str(os.getcwd() + "/exes")
 
-def number_of_chapters(folder):
+
+def list_of_chapters(folder):
     elps = []
     for root, dirs, files in os.walk(folder):
         for file in files:
             if file.endswith(".elp"):
-                elps.append({'folder':})
-    elps.sort()
+                elps.append({"folder": root, "file": file})
     return elps
 
 
 def generate_html(elps):
-    for i in range(len(elps)):
-        os.system("exe_do -s style=base -w exes/" + elps[i])
-        os.system(
-            "exe_do -x website exes/" + elps[i] + " exes/Modulo_" + str((i + 1)) + " -f"
-        )
-
-        # os.system('exe_do -s style=base -w exes/' + elps[i])
-        # os.system('exe_do -x website exes/' + elps[i] + ' exes/Modulo_' + str((i+1)) + ' -f')
+    for item in elps:
+        elp_file_path = os.path.join(item["folder"], item["file"])
+        html_folder_path = item["folder"].replace("/exes/", "/htmls/")
+        try:
+            os.mkdir(html_folder_path)
+        except:
+            pass
+        html_file_path = os.path.join(html_folder_path, item["file"][:-4])
+        os.system(f"exe_do -s style=base -w {elp_file_path}")
+        os.system(f"exe_do -x website {elp_file_path} {html_file_path} -f")
 
 
 if __name__ == "__main__":
-    elps = number_of_chapters(EXES)
+    elps = list_of_chapters(EXES)
     generate_html(elps)
